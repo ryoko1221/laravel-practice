@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use CloudCreativity\LaravelJsonApi\Facades\JsonApi;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +14,37 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::namespace('Api\V1\Auth')->prefix('api/v1')->middleware('json.api')->group(function () {
+    Route::post('/login', 'LoginController');
+    Route::post('/register', 'RegisterController');
+    Route::post('/logout', 'LogoutController')->middleware('auth:api');
+    Route::post('/password-forgot', 'ForgotPasswordController');
+    Route::post('/password-reset', 'ResetPasswordController');
+});
+
+Route::namespace('Api\V1')->prefix('api/v1')->middleware('auth:api')->group(function () {
+    Route::post('/uploads/{resource}/{id}/{field}', 'UploadController')->where('path', '.*');
+});
+
+JsonApi::register('v1')->middleware('auth:api')->routes(function ($api) {
+    $api->get('me', 'Api\V1\MeController@readProfile');
+    $api->patch('me', 'Api\V1\MeController@updateProfile');
+
+    $api->resource('users', [
+        'has-one' => 'roles'
+    ]);
+    $api->resource('roles', [
+        'has-many' => 'permissions'
+    ]);
+    $api->resource('permissions', [
+        'has-one' => 'roles'
+    ])->only('index');
+
+    $api->resource('categories');
+    $api->resource('tags');
+    $api->resource('items', [
+        'has-one' => 'user',
+        'has-one' => 'category',
+        'has-many' => 'tags'
+    ]);
 });

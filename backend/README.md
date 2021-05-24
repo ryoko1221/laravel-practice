@@ -1,62 +1,170 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# [Headless CMS with Laravel JSON:API PRO](https://headless-cms-with-laravel-json-api.creative-tim.com/?ref=hclja-readme)
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![version](https://img.shields.io/badge/version-1.0.0-blue.svg) [![GitHub issues open](https://img.shields.io/github/issues/creativetimofficial/ct-headless-cms-with-laravel-json-api.svg?maxAge=2592000)](https://github.com/creativetimofficial/ct-headless-cms-with-laravel-json-api/issues?q=is%3Aopen+is%3Aissue) [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/creativetimofficial/ct-headless-cms-with-laravel-json-api/ct-headless-cms-with-laravel-json-api.svg?maxAge=2592000)](https://github.com/creativetimofficial/ct-headless-cms-with-laravel-json-api/issues?q=is%3Aissue+is%3Aclosed)
 
-## About Laravel
+![Product Image](https://github.com/creativetimofficial/public-assets/raw/master/headless-cms-with-laravel-json-api/headless-cms-with-laravel-json-api.jpg?raw=true)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Laravel Headless CMS follows the JSON:API standard for building APIs in JSON. JSON:API is a specification for how a client should request that resources be fetched or modified, and how a server should respond to those requests. It`s specifically designed to increase efficiency by keeping the number of requests and the amount of data transmitted between clients and servers to a minimum.  
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+# Download
+Download the .zip file from the Creative Tim site and extract it.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+# Laravel API Setup
 
-## Learning Laravel
+## Introduction
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+JSON:API is a specification for how a client should request that resources be fetched or modified, and how a server should respond to those requests. It is designed to minimize both the number of requests and the amount of data transmitted between clients and servers. This efficiency is achieved without compromising readability, flexibility, or discoverability.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+[Click here to go to the JSON:API docs](https://explore.postman.com/api/6357/laravel-jsonapi)
 
-## Laravel Sponsors
+## Prerequisites
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+The Laravel JSON:API backend project requires a proper multi-threaded web server such as Apache/Nginx environment with PHP, Composer and MySQL.
 
-### Premium Partners
+**Do not use `php artisan serve` as it will result in stalled requests due to the single-threaded nature of the built-in PHP web server.** 
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
+We strongly recommend using [Laradock](https://laradock.io/) for Linux and Mac or [Laragon](https://laragon.org/download/) for Windows if possible.
 
-## Contributing
+Other options for your local environment:
+- Windows: [How to install WAMP on Windows](https://updivision.com/blog/post/beginner-s-guide-to-setting-up-your-local-development-environment-on-windows)
+- Linux: [How to install LAMP on Linux](https://howtoubuntu.org/how-to-install-lamp-on-ubuntu)
+- Mac: [How to install MAMP on MAC](https://wpshout.com/quick-guides/how-to-install-mamp-on-your-mac/)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+You will also need to install Composer 2: [https://getcomposer.org/doc/00-intro.md](https://getcomposer.org/doc/00-intro.md)
 
-## Code of Conduct
+## Laravel JSON:API Project Installation
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+1. Navigate in your Laravel API project folder: `cd your-laravel-json-api-project`
+2. Install project dependencies: `composer install`
+3. Create a new .env file: `cp .env.example .env`
+3. Add your own database credentials in the .env file in DB_DATABASE, DB_USERNAME, DB_PASSWORD
+5. Create users table: `php artisan migrate --seed`
+6. Generate application key: `php artisan key:generate`
+7. Install Laravel Passport: `php artisan passport:install`
+8. Add your own mailtrap.io credentials in MAIL_USERNAME and MAIL_PASSWORD in the .env file
 
-## Security Vulnerabilities
+## Usage
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+You can register as a user or log in using one of the default users: 
 
-## License
+- admin type - **admin@jsonapi.com** with the password **secret**
+- creator type - **creator@jsonapi.com** with the password **secret**
+- member type - **member@jsonapi.com** with the password **secret**
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+A **member type** user can log in, update his profile and view a list of added items.  
+A **creator type** user can log in, update his profile and perform actions on categories, tags and items.
+A **admin type** user can log in, update his profile and perform actions on categories, tags, items, roles and users.
+
+Headless CMS with Laravel JSON:API PRO provides basic CRUD endpoints for the most commonly used functionalities in any CMS. 
+
+* Authentication API: login, logout, register, send reset password email & reset password
+* Profile API: get profile, update profile
+* Users API: list, create, update and delete users, upload profile image
+* Roles API: list, create, edit and remove roles
+* Permissions API: list available permissions
+* Tags API: list, create, update and delete tags
+* Categories API: list, create, update and delete categories
+* Items API: list, create, update, delete items & upload item image
+
+## Table of Contents
+
+* [Versions](#versions)
+* [Documentation](#documentation)
+* [Dashboards built with Headless CMS with Laravel JSON:API PRO](#dashboards-built-with-headless-cms-with-laravel-json-api-pro)
+* [Resources](#resources)
+* [Reporting Issues](#reporting-issues)
+* [Licensing](#licensing)
+* [Useful Links](#useful-links)
+
+## Versions
+
+[<img src="https://github.com/creativetimofficial/public-assets/blob/master/logos/laravel_logo.png" height="80" />](#)
+[<img src="https://github.com/creativetimofficial/public-assets/blob/master/logos/json-api.png" height="75" />](#)
+
+## Documentation
+The documentation for the Headless CMS with Laravel JSON:API PRO is hosted at our [here](https://explore.postman.com/api/6357/laravel-jsonapi).
+
+## Resources
+- Download Page: <https://www.creative-tim.com/product/headless-cms-with-laravel-json-api-pro>
+- Documentation: <https://explore.postman.com/api/6357/laravel-jsonapi>
+- License Agreement: <https://www.creative-tim.com/license>
+- Support: <https://www.creative-tim.com/contact-us>
+- Issues: [Github Issues Page](https://github.com/creativetimofficial/ct-headless-cms-with-laravel-json-api-pro/issues)
+
+## Dashboards built with Headless CMS with Laravel JSON:API PRO
+| Vue Argon Dashboard Laravel | Vue Material Dashboard Laravel |
+| --- | --- |
+| [![Vue Argon Dashboard Pro Laravel](https://s3.amazonaws.com/creativetim_bucket/products/353/original/opt_adp_vue_laravel_thumbnail.jpg)](https://www.creative-tim.com/product/vue-argon-dashboard-pro-laravel?ref=hclja-readme) | [![Vue Material Dashboard Laravel Pro](https://s3.amazonaws.com/creativetim_bucket/products/332/original/opt_mdp_vuelaravel_thumbnail.jpg)](https://www.creative-tim.com/product/vue-material-dashboard-laravel-pro?ref=hclja-readme) |
+
+| Vue Black Dashboard Laravel | Vue White Dashboard Laravel |
+| --- | --- |
+| [![Vue Black Dashboard Pro Laravel](https://s3.amazonaws.com/creativetim_bucket/products/403/original/opt_bdp_vuelaravel_thumbnail.jpg)](https://www.creative-tim.com/product/vue-black-dashboard-pro-laravel?ref=vbdpl-readme) | [![Vue White Dashboard Pro Laravel](https://s3.amazonaws.com/creativetim_bucket/products/409/original/opt_wdp_vuelaravel_thumbnail.jpg)](https://www.creative-tim.com/product/vue-white-dashboard-pro-laravel?ref=vwdpl-readme) |
+
+| Vue Paper Dashboard Laravel | Vue Now UI Dashboard Laravel |
+| --- | --- |
+| [![Vue Paper Dashboard Pro Laravel ](https://s3.amazonaws.com/creativetim_bucket/products/405/original/opt_pdp_vuelaravel_thumbnail.jpg)](https://www.creative-tim.com/product/vue-paper-dashboard-pro-laravel?ref=vpdpl-readme) | [![Vue Now UI Dashboard Pro Laravel ](https://s3.amazonaws.com/creativetim_bucket/products/407/original/opt_nudp_vuelaravel_thumbnail.jpg)](https://www.creative-tim.com/product/vue-now-ui-dashboard-pro-laravel?ref=vnudpl-readme) |
+
+| Nuxt Argon Dashboard Laravel |
+| --- |
+| [![Nuxt Argon Dashboard Pro Laravel](https://s3.amazonaws.com/creativetim_bucket/products/351/original/opt_adp_nuxt_laravel_thumbnail.jpg)](https://www.creative-tim.com/product/nuxt-argon-dashboard-pro-laravel?ref=hclja-readme) |
+
+
+
+## Change log
+
+Please see the [changelog](CHANGELOG.md) for more information on what has changed recently.
+
+## Reporting Issues
+
+We use GitHub Issues as the official bug tracker for the Headless CMS with Laravel JSON:API PRO. Here are some advices for our users that want to report an issue:
+
+1. Make sure that you are using the latest version of the Headless CMS with Laravel JSON:API PRO. Check the CHANGELOG from your dashboard on our [website](https://www.creative-tim.com/?ref=hclja-readme).
+2. Providing us reproducible steps for the issue will shorten the time it takes for it to be fixed.
+3. Some issues may be browser specific, so specifying in what browser you encountered the issue might help.
+
+## Licensing
+
+- Copyright Creative Tim (https://www.creative-tim.com/?ref=hclja-readme)
+- Creative Tim License (https://www.creative-tim.com/license).
+
+
+## Useful Links
+
+- [Tutorials](https://www.youtube.com/channel/UCVyTG4sCw-rOvB9oHkzZD1w)
+- [Affiliate Program](https://www.creative-tim.com/affiliates/new) (earn money)
+- [Blog Creative Tim](http://blog.creative-tim.com/)
+- [Free Products](https://www.creative-tim.com/bootstrap-themes/free) from Creative Tim
+- [Premium Products](https://www.creative-tim.com/bootstrap-themes/premium?ref=hclja-readme) from Creative Tim
+- [React Products](https://www.creative-tim.com/bootstrap-themes/react-themes?ref=hclja-readme) from Creative Tim
+- [Angular Products](https://www.creative-tim.com/bootstrap-themes/angular-themes?ref=hclja-readme) from Creative Tim
+- [VueJS Products](https://www.creative-tim.com/bootstrap-themes/vuejs-themes?ref=hclja-readme) from Creative Tim
+- [More products](https://www.creative-tim.com/bootstrap-themes?ref=hclja-readme) from Creative Tim
+- Check our Bundles [here](https://www.creative-tim.com/bundles??ref=hclja-readme)
+
+## Social Media
+
+### Creative Tim:
+
+Twitter: <https://twitter.com/CreativeTim?ref=hclja-readme>
+
+Facebook: <https://www.facebook.com/CreativeTim?ref=hclja-readme>
+
+Dribbble: <https://dribbble.com/creativetim?ref=hclja-readme>
+
+Instagram: <https://www.instagram.com/CreativeTimOfficial?ref=hclja-readme>
+
+
+### Updivision:
+
+Twitter: <https://twitter.com/updivision?ref=hclja-readme>
+
+Facebook: <https://www.facebook.com/updivision?ref=hclja-readme>
+
+Linkedin: <https://www.linkedin.com/company/updivision?ref=hclja-readme>
+
+Updivision Blog: <https://updivision.com/blog/?ref=hclja-readme>
+
+## Credits
+
+- [Creative Tim](https://creative-tim.com/?ref=hclja-readme)
+- [UPDIVISION](https://updivision.com)
